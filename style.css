@@ -1,0 +1,37 @@
+/*Poppins font*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+path {
+    stroke: rgb(255, 255, 255);
+    fill:rgb(118, 119, 119) !important;
+
+    transition: fill .4s ease-in-out;
+}
+
+path:hover {
+    
+    fill: orange !important;
+}
+
+#us-map {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#details-box {
+    padding: 1rem;
+    border-radius: 8px;
+    font-size: 18px;
+    position: fixed;
+    color: rgb(0, 0, 0);
+    font-family: "Poppins";
+    background-color: transparent;
+    width: fit-content;
+    transform: translateX(-50%);
+    transition: opacity .4s ease;
+    z-index: 1;
+}
