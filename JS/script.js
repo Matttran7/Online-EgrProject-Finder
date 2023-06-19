@@ -15,15 +15,21 @@ input.onkeyup = (e)=>{
         //console.log(i);
         search_contain.classList.add("active");
         showStates(arr);
-        let full_arr = dropdown.querySelectorAll('li');
-        for(k = 0; k<full_arr.length;k++){
+        let full_arr = dropdown.querySelectorAll("li");
+        console.log(full_arr)
+        for(let k = 0; k<full_arr.length; k++){
             // make each li clickable
-            full_arr[k].setAttribute("onlick","select(this)");
+            full_arr[k].setAttribute("onclick", "select(this)");
         }
     }
     else{
         search_contain.classList.remove("active");
     }
+}
+
+function select(element){
+    let selectedU = element.textContent;
+    console.log(selectedU);
 }
 
 function showStates(lst){
@@ -37,4 +43,3 @@ function showStates(lst){
     }
     dropdown.innerHTML = lst_data;
 }
-
