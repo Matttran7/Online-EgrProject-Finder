@@ -31,6 +31,24 @@ function select(element){
     let selectedU = element.textContent;
     console.log(selectedU);
 }
+/**
+ * https://sebhastian.com/pass-javascript-variables-to-php/
+ */
+function SendData(element){
+    var data = {
+        loc: element
+    };
+    var httpReq = new XMLHttpRequest();
+
+    httpReq.open("POST","GetData.php",true);
+    httpReq.setRequestHeader("Content-Type","application/json");
+
+    httpReq.onreadystatechange = function () {
+        if (httpReq.readyState == XMLHttpRequest.DONE){alert(xhr.responseText);}
+    };
+    // send
+    httpReq.send(JSON.stringify(data))
+}
 
 function showStates(lst){
     let lst_data;
@@ -47,18 +65,18 @@ function showStates(lst){
 // Placeholder text
 // lets store on stack to push and pop, when can't push anymore from word pop
 // when can't pop anymore bc stack is empty, find a new word and push
-let per_word = 0 
-let placeholder = ""
-const txt_list = []
-const speed = 100
+let per_word = 0;
+let placeholder = "";
+const txt_list = [];
+const speed = 100;
 var slept = false;
 
 async function placeholder_fill(){
     if (!txt_list.length && placeholder){ 
         // slowly remove each character from placeholder
-        if(!slept){
+        if(!slept){ 
             await delay(2000)
-        }
+        } 
         if(placeholder.slice(-1) == " "){ // if it is a space character, remove another
             placeholder = placeholder.substring(0,placeholder.length-1);
         }
@@ -85,7 +103,7 @@ async function placeholder_fill(){
 }
 function getRandomState(){
     let rand_index = Math.floor(Math.random() * US_States.length);
-    return US_States[rand_index]
+    return US_States[rand_index];
 }
 /**
  * Delay issue solved by Alvaro Trigo 
