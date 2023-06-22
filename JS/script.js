@@ -30,6 +30,8 @@ input.onkeyup = (e)=>{
 function select(element){
     let selectedU = element.textContent;
     console.log(selectedU);
+    // Send data to php file
+    SendData(selectedU)
 }
 /**
  * https://sebhastian.com/pass-javascript-variables-to-php/
@@ -44,10 +46,13 @@ function SendData(element){
     httpReq.setRequestHeader("Content-Type","application/json");
 
     httpReq.onreadystatechange = function () {
-        if (httpReq.readyState == XMLHttpRequest.DONE){alert(xhr.responseText);}
+        if (httpReq.readyState == XMLHttpRequest.DONE){
+            alert(httpReq.responseText);
+        }
     };
     // send
-    httpReq.send(JSON.stringify(data))
+    // [ERROR] 405 (Method Not Allowed) TODO
+    httpReq.send(JSON.stringify(data));
 }
 
 function showStates(lst){
