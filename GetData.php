@@ -1,5 +1,10 @@
 <?php
 # recieve data
-$data = json_decode(file_get_contents("php://input"), true);
-
-echo "---> " . $data["loc"] . " <---";
+if(isset($_POST)){
+    file_get_contents("php://input");
+    $location = json_decode($data,true);
+    echo $location["loc"]
+}
+else{
+    echo "No data";
+}

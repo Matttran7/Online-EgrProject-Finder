@@ -2,6 +2,9 @@ const search_contain = document.querySelector(".search")
 const input = search_contain.querySelector("input")
 const dropdown = search_contain.querySelector(".auto-complete-area")
 
+/**
+ * Allow and take in user input from input text box
+ */
 input.onkeyup = (e)=>{
     let i = e.target.value.trimStart();
     let arr = [];
@@ -28,32 +31,64 @@ input.onkeyup = (e)=>{
 }
 
 function select(element){
-    let selectedU = element.textContent;
+    let selectedU = element.textContent; // string
     console.log(selectedU);
     // Send data to php file
-    SendData(selectedU)
+    //SendData(selectedU)
+    let data = {
+        loc: selectedU
+    }
+    fetch("GetData.php",{
+        "method": "POST",
+        "headers": {"Content-Type": "application/json; charset=utf-8"},
+        "body": JSON.stringify(data)
+    }).then(function(response){
+        return response.text();
+    }).then(function(data){
+        console.log(data);
+    })
+}
+function createCookie(name, value, days) {
+    var expires;
+      
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        expires = "; expires=" + date.toGMTString();
+    }
+    else {
+        expires = "";
+    }
+      
+    document.cookie = escape(name) + "=" + 
+        escape(value) + expires + "; path=/";
 }
 /**
- * https://sebhastian.com/pass-javascript-variables-to-php/
+ * Send selected location to GetData.php [NOT WORKING IN DEVELOPMENT ONLY WORKS WITH CLIENT -> SERVER]
  */
 function SendData(element){
+    if (typeof element != "string"){
+        return null
+    } // if not string get out
+
     var data = {
         loc: element
-    };
-    var httpReq = new XMLHttpRequest();
+    }
 
-    httpReq.open("POST","GetData.php",true);
-    httpReq.setRequestHeader("Content-Type","application/json");
+    var xhr = new XMLHttpRequest();
+    var phpfile = "GetData.php"
 
-    httpReq.onreadystatechange = function () {
-        if (httpReq.readyState == XMLHttpRequest.DONE){
-            alert(httpReq.responseText);
+    xhr.open("GET",phpfile,true);
+    xhr.setRequestHeader("Content-Type", "application/json");
+
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200){
+            alert(xhr.responseText);
         }
     };
-    // send
-    // [ERROR] 405 (Method Not Allowed) TODO
-    httpReq.send(JSON.stringify(data));
+    xhr.send(JSON.stringify(data));
 }
+///////////////////////////////////////////////////////////////////////////////////////////////////////
 
 function showStates(lst){
     let lst_data;
