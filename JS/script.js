@@ -44,8 +44,8 @@ function select(element){
         "body": JSON.stringify(data)
     }).then(function(response){
         return response.text();
-    }).then(function(data){
-        console.log(data);
+    }).then(function(data2){
+        console.log(data2);
     })
 }
 function createCookie(name, value, days) {
