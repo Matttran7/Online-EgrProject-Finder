@@ -1,7 +1,6 @@
 const search_contain = document.querySelector(".search")
 const input = search_contain.querySelector("input")
 const dropdown = search_contain.querySelector(".auto-complete-area")
-
 /**
  * Allow and take in user input from input text box
  */
@@ -29,25 +28,12 @@ input.onkeyup = (e)=>{
         search_contain.classList.remove("active");
     }
 }
-
 function select(element){
     let selectedU = element.textContent; // string
-    console.log(selectedU);
-    // Send data to php file
-    //SendData(selectedU)
-    let data = {
-        loc: selectedU
-    }
-    fetch("GetData.php",{
-        "method": "POST",
-        "headers": {"Content-Type": "application/json; charset=utf-8"},
-        "body": JSON.stringify(data)
-    }).then(function(response){
-        return response.text();
-    }).then(function(data2){
-        console.log(data2);
-    })
+    //console.log(selectedU);
+    
 }
+/*
 function createCookie(name, value, days) {
     var expires;
       
@@ -63,9 +49,9 @@ function createCookie(name, value, days) {
     document.cookie = escape(name) + "=" + 
         escape(value) + expires + "; path=/";
 }
-/**
+
  * Send selected location to GetData.php [NOT WORKING IN DEVELOPMENT ONLY WORKS WITH CLIENT -> SERVER]
- */
+ *
 function SendData(element){
     if (typeof element != "string"){
         return null
@@ -88,6 +74,7 @@ function SendData(element){
     };
     xhr.send(JSON.stringify(data));
 }
+*/
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 
 function showStates(lst){
