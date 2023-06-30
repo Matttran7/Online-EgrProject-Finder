@@ -1,6 +1,7 @@
-const search_contain = document.querySelector(".search")
-const input = search_contain.querySelector("input")
-const dropdown = search_contain.querySelector(".auto-complete-area")
+const search_contain = document.querySelector(".search");
+const input = search_contain.querySelector("input");
+const dropdown = search_contain.querySelector(".auto-complete-area");
+
 /**
  * Allow and take in user input from input text box
  */
@@ -31,7 +32,8 @@ input.onkeyup = (e)=>{
 function select(element){
     let selectedU = element.textContent; // string
     //console.log(selectedU);
-    
+    //var mongoDB = require('./search/mongo.js');
+    //mongoDB.connect();
 }
 /*
 function createCookie(name, value, days) {
