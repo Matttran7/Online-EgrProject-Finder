@@ -32,9 +32,18 @@ input.onkeyup = (e)=>{
 function select(element){
     let selectedU = element.textContent; // string
     //console.log(selectedU);
-    //var mongoDB = require('./search/mongo.js');
-    //mongoDB.connect();
+    postInfo(selectedU);
 }
+
+const sendUrl = 'http://localhost:3000/search'; // TEMP TODO
+async function postInfo(loc){
+    await fetch('/search',{
+        method: 'POST',
+        headers:{'Content-Type': 'application/json'},
+        body:JSON.stringify({parcel:loc})
+    });
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////////
 /*
 function createCookie(name, value, days) {
     var expires;
@@ -52,8 +61,7 @@ function createCookie(name, value, days) {
         escape(value) + expires + "; path=/";
 }
 
- * Send selected location to GetData.php [NOT WORKING IN DEVELOPMENT ONLY WORKS WITH CLIENT -> SERVER]
- *
+Send selected location to GetData.php [NOT WORKING IN DEVELOPMENT ONLY WORKS WITH CLIENT -> SERVER]
 function SendData(element){
     if (typeof element != "string"){
         return null
@@ -75,8 +83,7 @@ function SendData(element){
         }
     };
     xhr.send(JSON.stringify(data));
-}
-*/
+}*/
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 
 function showStates(lst){
