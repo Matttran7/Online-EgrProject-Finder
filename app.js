@@ -19,6 +19,8 @@ app.get('/',function(req,res) {
 
 app.get('/listings',function(req,res) {
   res.sendFile(__dirname+'/view'+'/'+'listings.html');
+  //res.render('/listings');
+  //return res.redirect(307, "/listings");
 });
 
 /**
@@ -27,6 +29,7 @@ app.get('/listings',function(req,res) {
 app.post('/search',(req,res) => {
   const { parcel } = req.body;
   RedirectToListings(parcel);
+//console.log("pre res");
 });
 
 /**
@@ -35,6 +38,7 @@ app.post('/search',(req,res) => {
 async function RedirectToListings(parcel){
   // connect to mongodb and find all entries matching "parcel"
   await mongoDB.connectAdd(parcel);
+
 }
 
 /**

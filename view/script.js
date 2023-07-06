@@ -31,8 +31,13 @@ input.onkeyup = (e)=>{
 }
 function select(element){
     let selectedU = element.textContent; // string
-    //console.log(selectedU);
-    postInfo(selectedU);
+    
+    /**
+     * [Potential Issue] ->  Page loads before data is ready TODO
+     */
+    window.location.href = 'http://localhost:3000/listings';
+    postInfo(selectedU); 
+    
 }
 
 /**
@@ -45,6 +50,7 @@ async function postInfo(loc){
         headers:{'Content-Type': 'application/json'},
         body:JSON.stringify({parcel:loc})
     });
+    return null
 }
 /**
  * Show all possible states based on user input
