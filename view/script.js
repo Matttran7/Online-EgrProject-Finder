@@ -43,48 +43,6 @@ async function postInfo(loc){
         body:JSON.stringify({parcel:loc})
     });
 }
-///////////////////////////////////////////////////////////////////////////////////////////////////////
-/*
-function createCookie(name, value, days) {
-    var expires;
-      
-    if (days) {
-        var date = new Date();
-        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-        expires = "; expires=" + date.toGMTString();
-    }
-    else {
-        expires = "";
-    }
-      
-    document.cookie = escape(name) + "=" + 
-        escape(value) + expires + "; path=/";
-}
-
-Send selected location to GetData.php [NOT WORKING IN DEVELOPMENT ONLY WORKS WITH CLIENT -> SERVER]
-function SendData(element){
-    if (typeof element != "string"){
-        return null
-    } // if not string get out
-
-    var data = {
-        loc: element
-    }
-
-    var xhr = new XMLHttpRequest();
-    var phpfile = "GetData.php"
-
-    xhr.open("GET",phpfile,true);
-    xhr.setRequestHeader("Content-Type", "application/json");
-
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState == 4 && xhr.status == 200){
-            alert(xhr.responseText);
-        }
-    };
-    xhr.send(JSON.stringify(data));
-}*/
-///////////////////////////////////////////////////////////////////////////////////////////////////////
 
 function showStates(lst){
     let lst_data;
