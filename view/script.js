@@ -22,7 +22,7 @@ input.onkeyup = (e)=>{
         //console.log(full_arr)
         for(let k = 0; k<full_arr.length; k++){
             // make each li clickable
-            full_arr[k].setAttribute("onclick", "select(this)");
+            full_arr[k].setAttribute("onclick", "select(this);");
         }
     }
     else{
@@ -35,6 +35,9 @@ function select(element){
     postInfo(selectedU);
 }
 
+/**
+ * POST, send which state got selected to mongo
+ */
 const sendUrl = 'http://localhost:3000/search'; // TEMP TODO
 async function postInfo(loc){
     await fetch('/search',{
@@ -43,7 +46,9 @@ async function postInfo(loc){
         body:JSON.stringify({parcel:loc})
     });
 }
-
+/**
+ * Show all possible states based on user input
+ */
 function showStates(lst){
     let lst_data;
     // if list is empty, no show
@@ -65,6 +70,9 @@ const txt_list = [];
 const speed = 100;
 var slept = false;
 
+/**
+ * Fill the input text with text incrementally, and remove from the box once the word is complete .. incrementally
+ */
 async function placeholder_fill(){
     if (!txt_list.length && placeholder){ 
         // slowly remove each character from placeholder
@@ -95,6 +103,9 @@ async function placeholder_fill(){
     }
     setTimeout(placeholder_fill,speed);
 }
+/**
+ * Returns random state from ./US_States.js
+ */
 function getRandomState(){
     let rand_index = Math.floor(Math.random() * US_States.length);
     return US_States[rand_index];

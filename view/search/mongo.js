@@ -1,9 +1,11 @@
 const mongoose = require('mongoose');
 
 // Connect to mongodb ** only when searched, don't wanna connect if no search
-var CONFIG = require('../../config.json');
 const { MongoClient } = require('mongodb');
+var CONFIG = require('../../config.json');
 const uri = 'mongodb+srv://'+CONFIG.mUser+':'+CONFIG.mPass+'@pmcluster.kpll3ey.mongodb.net/';
+
+
 /**
  * Connect to the mongo database then call folowup functions [FindLocations, createListing, listDatabases]
  */
@@ -23,6 +25,7 @@ async function connectAdd(loc) {
         await client.close();
     }
 };
+
 /**
  * Find all entries in database that matches input "location"
  */
@@ -38,6 +41,7 @@ async function FindLocations(client, location){
         console.log("None found");
     }
 }
+
 /**
  * add new listing to the "Locations" database
  * await createListing(client,{

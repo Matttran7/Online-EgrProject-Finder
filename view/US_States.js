@@ -1,3 +1,4 @@
+/** Different possible states to pick from */
 let US_States = [
     "Alabama",
     "Alaska",
