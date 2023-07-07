@@ -1,9 +1,7 @@
-// Function to query data
-var FindData = function FindData (loc) {
-    // make sure mongo is connected first
-    // if not error
-    // query for all data
-    // return results
+
+function DisplayData(){
+    console.log(search_list+ "-Search List-");
+    document.getElementById("temp").innerHTML+= search_list.toString();
 }
 
-module.exports.query = FindData;
+DisplayData();

@@ -28,18 +28,8 @@ app.get('/listings',function(req,res) {
  */
 app.post('/search',(req,res) => {
   const { parcel } = req.body;
-  RedirectToListings(parcel);
-//console.log("pre res");
+  mongoDB.connectFind(parcel);
 });
-
-/**
- * After user selected location, get data and redirect user to follow-up page
- */
-async function RedirectToListings(parcel){
-  // connect to mongodb and find all entries matching "parcel"
-  await mongoDB.connectAdd(parcel);
-
-}
 
 /**
  * Start server
