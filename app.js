@@ -4,6 +4,7 @@ const app = express();
 const path = require('path');
 const router = express.Router();
 var mongoDB = require('./view/search/mongo.js');
+const ejs = require('ejs')
 
 app.use('/', router);
 
@@ -17,19 +18,57 @@ app.get('/',function(req,res) {
     res.sendFile(__dirname+'/view'+'/'+'index.html');
   });
 
-app.get('/listings',function(req,res) {
-  res.sendFile(__dirname+'/view'+'/'+'listings.html');
-  //res.render('/listings');
-  //return res.redirect(307, "/listings");
-});
+//==================================================================================================//
 
 /**
  * Gets location back from site once user has selected location
  */
-app.post('/search',(req,res) => {
-  const { parcel } = req.body;
-  mongoDB.connectFind(parcel);
+app.post('/search', async (req,res) => {
+  const location = req.body.parcel;
+  console.dir(location)
+  try{
+    let result = await mongoDB.connectFind(location);
+    //console.log("result:  " + result);
+    //res.json(result);
+    res.redirect(`/listings?data=${encodeURIComponent(JSON.stringify(result))}`);
+  } catch (error){
+    console.error('Error:', error);
+    res.status(500).send('Internal Server Error');
+  }
 });
+
+/**
+ * Render follow-up website
+ */
+// Set the views directory
+app.set('view engine', 'ejs');
+// Route handler for '/listings'
+app.set('views', path.join(__dirname, 'view'));
+app.get('/listings', (req, res) => {
+  try {
+    console.log(req.query.data + "    REQ2")
+    const queriedData = JSON.parse(req.query.data);
+    console.log(queriedData)
+    // Check for data
+    if (!queriedData || queriedData.length === 0) {
+      throw new Error('Data is missing');
+    }
+    const data = JSON.parse(queriedData);
+    // Render the 'listings' view and pass the queried data
+    res.render('listings', { data });
+  } catch (error) {
+    console.error('Error parsing JSON data:', error);
+    res.status(400).send('Bad Request');
+  }
+});
+
+//==================================================================================================//
+
+
+
+
+
+
 
 /**
  * Start server

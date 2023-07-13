@@ -11,6 +11,7 @@ const uri = 'mongodb+srv://'+CONFIG.mUser+':'+CONFIG.mPass+'@pmcluster.kpll3ey.m
  */
 async function connectFind(loc) {
     const client = new MongoClient(uri);
+    let res_list = null;
     if (typeof loc != 'string'){
         loc = ""; // empty str
     }
@@ -18,7 +19,7 @@ async function connectFind(loc) {
         await client.connect();
         console.log("Successfully connected");
         // Find location
-        let res_list = await FindLocations(client, loc);
+        res_list = await FindLocations(client, loc);
         /**
          * Should then call a GET function to send data to client (should it be through app.js)
          */
@@ -26,6 +27,8 @@ async function connectFind(loc) {
         console.log(error);
     } finally {
         await client.close();
+        //console.log(JSON.stringify(res_list)+ "<<----- res_list")
+        return JSON.stringify(res_list);
     }
 };
 
@@ -36,6 +39,7 @@ var searched_list = require('./search_list.js');
 async function FindLocations(client, location){
     let res_list = [];
     location = location.toLowerCase();
+
     const cursor = await client.db("Locations").collection("Names").find({State:location}).sort();
     const result = await cursor.toArray();
     if(result.length > 0){

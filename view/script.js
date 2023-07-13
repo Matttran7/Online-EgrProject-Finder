@@ -31,26 +31,40 @@ input.onkeyup = (e)=>{
 }
 function select(element){
     let selectedU = element.textContent; // string
-    
+    postInfo(selectedU); 
+}
+
+function handleSearchResponse(data) {
+    // Process the queried data and perform any necessary actions
+    console.log('Received data:', data);
+    // Redirect to the next page after data is processed
     /**
-     * [Potential Issue] ->  Page loads before data is ready TODO
+     * Called the GET /listings function in app.js again TODO
      */
     window.location.href = 'http://localhost:3000/listings';
-    postInfo(selectedU); 
-    
 }
 
 /**
  * POST, send which state got selected to mongo
  */
 const sendUrl = 'http://localhost:3000/search'; // TEMP TODO
-async function postInfo(loc){
-    await fetch('/search',{
+function postInfo(loc){
+    console.log("postInfo1")
+    fetch('/search',{
         method: 'POST',
         headers:{'Content-Type': 'application/json'},
         body:JSON.stringify({parcel:loc})
-    });
-    return null
+    })
+    .then(response => {
+        return response.text();
+    })
+    .then(data => {
+        // Handle the response data
+        handleSearchResponse(data);
+      })
+    .catch(error => {
+        console.error('Error:', error);
+      });
 }
 /**
  * Show all possible states based on user input
