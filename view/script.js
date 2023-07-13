@@ -37,11 +37,12 @@ function select(element){
 function handleSearchResponse(data) {
     // Process the queried data and perform any necessary actions
     console.log('Received data:', data);
-    // Redirect to the next page after data is processed
+      // Send the data to the '/listings' route
+      const url = `/listings?data=${encodeURIComponent(JSON.stringify(data))}`;
     /**
      * Called the GET /listings function in app.js again TODO
      */
-    window.location.href = 'http://localhost:3000/listings';
+    window.location.href = url;
 }
 
 /**

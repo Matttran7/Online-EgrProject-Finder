@@ -29,8 +29,8 @@ app.post('/search', async (req,res) => {
   try{
     let result = await mongoDB.connectFind(location);
     //console.log("result:  " + result);
-    //res.json(result);
-    res.redirect(`/listings?data=${encodeURIComponent(JSON.stringify(result))}`);
+    res.send(result);
+    //res.redirect(`/listings?data=${encodeURIComponent(JSON.stringify(result))}`);
   } catch (error){
     console.error('Error:', error);
     res.status(500).send('Internal Server Error');
@@ -44,11 +44,11 @@ app.post('/search', async (req,res) => {
 app.set('view engine', 'ejs');
 // Route handler for '/listings'
 app.set('views', path.join(__dirname, 'view'));
+
 app.get('/listings', (req, res) => {
   try {
-    console.log(req.query.data + "    REQ2")
     const queriedData = JSON.parse(req.query.data);
-    console.log(queriedData)
+    console.log(queriedData + "           queried data")
     // Check for data
     if (!queriedData || queriedData.length === 0) {
       throw new Error('Data is missing');
