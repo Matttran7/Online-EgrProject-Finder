@@ -1,9 +1,2 @@
 
-Make default input text enter and dissapear 
 
-Search by county? Abbreviation
-
-Link next site, input SQL search with location
-    - should be able to hit [Enter] -> would just take the first recc in li
-    - should be able to click on the li like a button
- 
