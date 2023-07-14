@@ -1,0 +1,13 @@
+{
+  "dependencies": {
+    "browserify-shim": "^3.8.16",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "hbs": "^4.2.0",
+    "mongodb": "^5.6.0",
+    "mongoose": "^7.3.1",
+    "requirejs": "^2.3.6",
+    "save": "^2.9.0",
+    "uniq": "^1.0.1"
+  }
+}
