@@ -48,7 +48,7 @@ app.set('views', path.join(__dirname, 'view'));
 app.get('/listings', (req, res) => {
   try {
     const queriedData = JSON.parse(req.query.data);
-    console.log(queriedData + "           queried data")
+    
     // Check for data
     if (!queriedData || queriedData.length === 0) {
       throw new Error('Data is missing');

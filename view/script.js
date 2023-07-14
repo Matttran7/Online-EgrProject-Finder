@@ -34,6 +34,7 @@ function select(element){
     postInfo(selectedU); 
 }
 
+// ========================================================================================== //
 function handleSearchResponse(data) {
     // Process the queried data and perform any necessary actions
     console.log('Received data:', data);
@@ -50,7 +51,6 @@ function handleSearchResponse(data) {
  */
 const sendUrl = 'http://localhost:3000/search'; // TEMP TODO
 function postInfo(loc){
-    console.log("postInfo1")
     fetch('/search',{
         method: 'POST',
         headers:{'Content-Type': 'application/json'},
@@ -67,6 +67,8 @@ function postInfo(loc){
         console.error('Error:', error);
       });
 }
+// ========================================================================================== //
+
 /**
  * Show all possible states based on user input
  */

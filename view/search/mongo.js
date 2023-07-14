@@ -12,9 +12,11 @@ const uri = 'mongodb+srv://'+CONFIG.mUser+':'+CONFIG.mPass+'@pmcluster.kpll3ey.m
 async function connectFind(loc) {
     const client = new MongoClient(uri);
     let res_list = null;
+    console.log(loc + " <-- location1");
     if (typeof loc != 'string'){
         loc = ""; // empty str
     }
+    console.log(loc + " <-- location2");
     try {
         await client.connect();
         console.log("Successfully connected");
@@ -35,7 +37,6 @@ async function connectFind(loc) {
 /**
  * Find all entries in database that matches input "location"
  */
-var searched_list = require('./search_list.js');
 async function FindLocations(client, location){
     let res_list = [];
     location = location.toLowerCase();
