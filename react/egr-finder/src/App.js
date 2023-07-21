@@ -1,20 +1,24 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './style.css';
-import { handleInputChangeLogic ,placeholderFillLogic } from './SearchLogic';
+import US_States from './US_States';
+import { handleInputChangeLogic, placeholderFillLogic } from './SearchLogic';
 
 function App() {
-    const [placeholder, setPlaceholder] = useState('');
-    const [txtList, setTxtList] = useState([]);
-    const speed = 100; // speed value
-    const [slept, setSlept] = useState(false);
-    const searchContainRef = useRef(null);
-    const dropdownRef = useRef(null);
+  const [placeholder, setPlaceholder] = useState('');
+  const [txtList, setTxtList] = useState([]);
+  const [inputValue, setInputValue] = useState(''); // input value
+  const [filteredOptions, setFilteredOptions] = useState([]); // filtered options
+  const speed = 100;
+  const [slept, setSlept] = useState(false);
+  const searchContainRef = useRef(null);
+  const dropdownRef = useRef(null);
 
-    const handleInputChange = (e) => {
-      handleInputChangeLogic(e.target.value.trimStart(), setPlaceholder, setTxtList, placeholder, txtList, dropdownRef.current);
-    };
+  const handleInputChange = (e) => {
+    setInputValue(e.target.value); // Update the input value
+    handleInputChangeLogic(e.target.value.trimStart(), setPlaceholder, setTxtList, setFilteredOptions);
+  };
 
-    useEffect(() => {
+  useEffect(() => {
     placeholderFillLogic(
       placeholder,
       setPlaceholder,
@@ -26,22 +30,32 @@ function App() {
       dropdownRef.current
     );
   }, [placeholder, setPlaceholder, txtList, setTxtList, speed, slept]);
-   
-    return (
+
+  return (
     <div className="App">
-       <div className="container"> {/* Added container */}
+      <div className="container">
         <div className="header">
           <h1>project<br />monkey</h1>
         </div>
-        <div className="search-container" ref={searchContainRef}>
+        <div className="search-container">
           <div className="search">
-            
-            <input type="text"
+            <input
+              type="text"
               id="input_box"
+              value={inputValue}
               onChange={handleInputChange}
-              placeholder={placeholder}></input>
-
-            <div className="auto-complete-area" id="autoComplete" ref={dropdownRef}></div>
+              placeholder={placeholder}
+            />
+            {/* Show the dropdown if filteredOptions is not empty */}
+            {filteredOptions.length > 0 && (
+              <div className="auto-complete-area" id="autoComplete" ref={dropdownRef}>
+                <ul>
+                  {filteredOptions.map((option, index) => (
+                    <li key={index}>{option}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </div>
         </div>
       </div>
