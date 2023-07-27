@@ -1,2 +1,6 @@
 
-
+1. Make each li clickable ✅
+2. filler words stack and unstack
+3. quiery mongodb onclick (maybe reuse code)
+3,1. send data to next site
+4. fix CSS for clickable li

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import './style.css';
+//import './style.css';
 import US_States from './US_States';
 import { handleInputChangeLogic, placeholderFillLogic } from './SearchLogic';
 
@@ -31,6 +31,12 @@ function App() {
     );
   }, [placeholder, setPlaceholder, txtList, setTxtList, speed, slept]);
 
+  const handleSelectOption = (option) => {
+    setInputValue(option);
+    setFilteredOptions([]); // Hide dropdown setting filteredOptions to empty array
+    console.log(option);
+  };
+
   return (
     <div className="App">
       <div className="container">
@@ -51,7 +57,7 @@ function App() {
               <div className="auto-complete-area" id="autoComplete" ref={dropdownRef}>
                 <ul>
                   {filteredOptions.map((option, index) => (
-                    <li key={index}>{option}</li>
+                    <li key={index} onClick={() => handleSelectOption(option)}>{option}</li>
                   ))}
                 </ul>
               </div>
