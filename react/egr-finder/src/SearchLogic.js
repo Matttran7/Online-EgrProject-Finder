@@ -10,7 +10,6 @@ export function handleInputChangeLogic(inputValue, setPlaceholder, setTxtList, s
   if (i) {
     arr = US_States.filter((data) => data.toLowerCase().startsWith(i.toLowerCase()));
     setFilteredOptions(arr);
-    console.log("2")
   } else {
     setFilteredOptions([]);
 

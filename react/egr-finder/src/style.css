@@ -126,6 +126,7 @@ html, body, #app {
   /*border-radius: 5px;*/
   transition: .2s;
   background-color:white;
+  pointer-events: auto;
 }
 
 .search.active .auto-complete-area li {
