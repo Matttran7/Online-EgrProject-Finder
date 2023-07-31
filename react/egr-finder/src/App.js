@@ -16,6 +16,7 @@ function App() {
   var slept = false;
   let placeholderTemp = "";
   const [isAnimationRunning, setIsAnimationRunning] = useState(true);
+  const [locationData,setLocationData] = useState([{}]);
 
   const handleInputChange = (e) => {
     setInputValue(e.target.value); // Update the input value
@@ -32,10 +33,25 @@ function App() {
     }
   };
 
-  const handleSelectOption = (option) => {
-    setInputValue(option);
+  const handleSelectOption = (option) => { // Function that occurs when user selects location (option)
+    setInputValue(option); // Set the input to selected
     setFilteredOptions([]); // Hide dropdown setting filteredOptions to empty array
+    option = option.toString();
     console.log(option);
+    
+    fetch("/api/locations",{
+      method:"POST",
+      headers:{
+        "Content-type":"application/json"
+      },
+      body:JSON.stringify({location:option})
+      }).then(response => response.json())
+      .then(data => {
+        console.log("Response data:", data);
+      })
+      .catch(error => {
+        console.error("Error sending data:", error);
+      });
   };
 
 
