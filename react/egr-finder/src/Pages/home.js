@@ -2,8 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import '../style.css';
 import US_States from '../US_States';
 import { handleInputChangeLogic} from '../SearchLogic';
-import { BrowserRouter as Router, Switch, 
-  Route, Redirect, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 
 function Home() {
@@ -14,12 +13,10 @@ function Home() {
   const dropdownRef = useRef(null);
   const txtListRef = useRef([]);
   const timeoutIdRef = useRef(null);
-  const txt_list = [];
   const speed = 100;
   var slept = false;
   let placeholderTemp = "";
   const [isAnimationRunning, setIsAnimationRunning] = useState(true);
-  const [locationData,setLocationData] = useState([{}]);
   const navigate = useNavigate();
 
   const handleInputChange = (e) => {
@@ -50,7 +47,6 @@ function Home() {
       body:JSON.stringify({location:option})
       }).then(response => response.json())
       .then(data => { // Once get data, go to second site and show
-        //console.log("Response data:", data);
         navigate('/locations', {state: {locationData: data}});
       })
       .catch(error => {
@@ -94,6 +90,9 @@ function Home() {
         placeholderTemp += txtListRef.current.shift();
       }
       setPlaceholder(placeholderTemp);
+    }
+    if (timeoutIdRef.current) {
+      clearTimeout(timeoutIdRef.current);
     }
     timeoutIdRef.current = setTimeout(PlaceHolderFill, speed);
   }

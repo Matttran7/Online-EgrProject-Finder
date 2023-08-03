@@ -20,7 +20,6 @@ body, html, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 
 /*==========================================================================*/
 
-
 html, body, #app {
     height: 100%;
     margin: 0;
@@ -127,6 +126,7 @@ html, body, #app {
   transition: .2s;
   background-color:white;
   pointer-events: auto;
+  color:dimgray;
 }
 
 .search.active .auto-complete-area li {
