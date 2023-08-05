@@ -47,7 +47,7 @@ function Home() {
       body:JSON.stringify({location:option})
       }).then(response => response.json())
       .then(data => { // Once get data, go to second site and show
-        navigate('/locations', {state: {locationData: data}});
+        navigate('/locations', {state: {locationData: data, loc: option}});
       })
       .catch(error => {
         console.error("Error sending data:", error);

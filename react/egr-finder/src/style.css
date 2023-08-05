@@ -127,6 +127,9 @@ html, body, #app {
   background-color:white;
   pointer-events: auto;
   color:dimgray;
+  margin-bottom: 0;
+  border: none;
+  border-radius: 0;
 }
 
 .search.active .auto-complete-area li {
