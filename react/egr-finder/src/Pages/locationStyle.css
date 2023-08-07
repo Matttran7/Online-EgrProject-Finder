@@ -1,6 +1,7 @@
 /*Space mono*/
 @import url('https://fonts.googleapis.com/css2?family=Space+Mono&display=swap');
-
+/*Press Start 2P*/
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 /*Reset CSS*/
 body, html, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
     margin: 0;
@@ -9,31 +10,25 @@ body, html, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
     font-size: 100%;
     font: inherit;
     vertical-align: baseline;
-  }
-
-
+}
 
 body {
-    color: white;
+    background-color: #07051c;
     font-family: 'Space Mono', monospace;
+  }
+  .header-container {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 20px 0; 
 }
-.location{
+  .location {
     color: white;
     font-size: 50px;
-}
-
-
-ul {
-    list-style-type: none;
-    padding: 0;
-}
-  
-li {
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 10px;
-    margin-bottom: 10px;
-    width: 800px;
+    font-family: 'Press Start 2P', cursive;
+    text-align: center;
+    padding: 20px 0; 
 }
 
 .project {
@@ -41,12 +36,54 @@ li {
     font-size: 27px;
     font-weight: bold;
 }
+
 .group {
-    color: aqua;
+    color: rgb(255, 255, 255);
     font-size: 17px;
     font-weight: bold;
 }
+
 .description {
     font-size: 14px;
     color: white;
+}
+
+.email {
+    font-size: 14px;
+    color: white;
+}
+
+
+.expandContainer {
+    padding: 15px 5px; 
+    margin: 5px 0;
+    cursor: pointer;
+    transition: max-height 0.3s ease, padding-top 0.3s ease, opacity 0.3s ease; /* max height transition */
+    position: relative;
+    overflow: hidden; /*Hide noDrop*/
+    border: 2px solid #ffffff;
+    max-width: 800px;
+}
+
+.noDrop {
+    padding: 10px;
+    position: relative;
+}
+
+.expandContainer.expanded {
+    border: 2px solid #ffffff;
+}
+
+.drop {
+    max-height: 0;
+    opacity: 0;
+    padding: 10px;
+    transition: max-height 0.3s ease, padding-top 0.3s ease, opacity 0.3s ease; /* opacity transition */
+    overflow: hidden; 
+}
+
+.expandContainer.expanded .drop {
+    max-height: 1000px; 
+    opacity: 1;
+    padding-top: 10px; 
 }
