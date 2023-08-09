@@ -12,7 +12,6 @@ export function handleInputChangeLogic(inputValue, setPlaceholder, setTxtList, s
     setFilteredOptions(arr);
   } else {
     setFilteredOptions([]);
-
   }
 }
 
