@@ -4,7 +4,10 @@
 3. quiery mongodb onclick (maybe reuse code) ✅
 3,1. send data to next site ✅
 4. fix CSS for clickable li ✅
-5. style followup
+5. style 
+    5.1 New satelite image (include "remote projects" in iamge)
 6. put in captcha
+7. able to submit a new project
+    7.1 once submitted, it will send to email (user and host) and say it on screen
 
 clean project

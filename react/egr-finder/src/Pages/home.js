@@ -3,7 +3,7 @@ import '../style.css';
 import US_States from '../US_States';
 import { handleInputChangeLogic} from '../SearchLogic';
 import { useNavigate } from "react-router-dom";
-
+import Footer from "./Footer";
 
 function Home() {
   const [placeholder, setPlaceholder] = useState('');
@@ -161,6 +161,7 @@ function Home() {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }
