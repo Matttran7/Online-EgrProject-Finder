@@ -54,7 +54,24 @@ html, body, #app {
     font-size: 50px;
     color: rgb(255, 255, 255);
   }
+  .sateliteDiv {
+    position: fixed;
+    bottom: 10%;
+    right: 0;
+    width: 30%;
+    height:auto;
+    padding: 1%;
+  }
   
+  .satelite {
+    max-width: 70%; 
+    min-width: 60%;
+    display: block;
+    transition: all .1s;
+  }
+  .satelite:hover{
+    transform: scale(1.2);
+  }
   .search-container {
     margin-top: 15px; 
     text-align: center;

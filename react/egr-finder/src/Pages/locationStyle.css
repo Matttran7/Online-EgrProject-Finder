@@ -30,7 +30,6 @@ body {
     text-align: center;
     padding: 20px 0; 
 }
-
 .project {
     color: aqua;
     font-size: 27px;
@@ -54,6 +53,7 @@ body {
 }
 
 
+/*=================================================================================================================*/
 .expandContainer {
     padding: 15px 5px; 
     margin: 5px 0;

@@ -35,7 +35,6 @@ function Home() {
   };
 
   const handleSelectOption = (option) => { // Function that occurs when user selects location (option)
-    setInputValue(option); // Set the input to selected
     setFilteredOptions([]); // Hide dropdown setting filteredOptions to empty array
     option = option.toString();
     console.log(option);
@@ -131,6 +130,12 @@ function Home() {
                 </ul>
               </div>
             )}
+            <div className='sateliteDiv'>
+              {/* Clickable Image, will scale on hover */}
+              <a href="#" onClick={() => handleSelectOption("Remote")}>
+                <img className='satelite' src="https://i.postimg.cc/8kWWTzLV/Satelite.png" alt="Satellite" />
+              </a>
+            </div>
           </div>
         </div>
       </div>

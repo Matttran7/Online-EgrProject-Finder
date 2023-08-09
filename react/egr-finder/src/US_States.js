@@ -49,7 +49,8 @@ const US_States = [
     "Washington",
     "West Virginia",
     "Wisconsin",
-    "Wyoming"
+    "Wyoming",
+    "Remote"
 ];
 
 export default US_States;
