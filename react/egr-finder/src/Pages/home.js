@@ -16,6 +16,7 @@ function Home() {
   const speed = 100;
   var slept = false;
   let placeholderTemp = "";
+  const [satelliteClicked, setSatelliteClicked] = useState(false);
   const [isAnimationRunning, setIsAnimationRunning] = useState(true);
   const navigate = useNavigate();
 
@@ -35,6 +36,13 @@ function Home() {
   };
 
   const handleSelectOption = (option) => { // Function that occurs when user selects location (option)
+    if (option === "Remote" && !satelliteClicked) {
+      // Your code here to handle the option
+      console.log("Option selected:", option);
+
+      // Mark the satellite as clicked
+      setSatelliteClicked(true);
+    }
     setFilteredOptions([]); // Hide dropdown setting filteredOptions to empty array
     option = option.toString();
     console.log(option);
@@ -104,6 +112,22 @@ function Home() {
       clearTimeout(timeoutIdRef.current);
     };
   }, [isAnimationRunning]);
+  
+  /**
+   * satelite code to prevent user spamming the satelite button
+   */
+  let satelliteContent;
+  if (satelliteClicked) {
+    satelliteContent = (
+      <img className='satelite' src="https://i.postimg.cc/8kWWTzLV/Satelite.png" alt="Satellite" />
+    );
+  } else {
+    satelliteContent = (
+      <a href="#" onClick={() => handleSelectOption("Remote")}>
+        <img className='satelite' src="https://i.postimg.cc/8kWWTzLV/Satelite.png" alt="Satellite" />
+      </a>
+    );
+  }
 
   return (
     <div className="home">
@@ -132,9 +156,7 @@ function Home() {
             )}
             <div className='sateliteDiv'>
               {/* Clickable Image, will scale on hover */}
-              <a href="#" onClick={() => handleSelectOption("Remote")}>
-                <img className='satelite' src="https://i.postimg.cc/8kWWTzLV/Satelite.png" alt="Satellite" />
-              </a>
+              {satelliteContent}
             </div>
           </div>
         </div>
