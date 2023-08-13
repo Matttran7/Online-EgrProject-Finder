@@ -23,15 +23,18 @@ body {
     transform: translateX(-50%);
     padding: 20px 0; 
 }
+.main-container{
+    font-family: 'Space Mono', monospace;
+}
   .location {
-    color: white;
+    color: rgb(255, 255, 255);
     font-size: 50px;
     font-family: 'Press Start 2P', cursive;
     text-align: center;
     padding: 20px 0; 
 }
 .project {
-    color: aqua;
+    color: rgb(255, 255, 255);
     font-size: 27px;
     font-weight: bold;
 }
@@ -62,7 +65,7 @@ body {
     position: relative;
     overflow: hidden; /*Hide noDrop*/
     border: 2px solid #ffffff;
-    max-width: 800px;
+    width: 1000px;
 }
 
 .noDrop {

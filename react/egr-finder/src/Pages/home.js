@@ -35,11 +35,9 @@ function Home() {
     }
   };
 
-  const handleSelectOption = (option) => { // Function that occurs when user selects location (option)
+  const handleSelectOption = (option) => { 
     if (option === "Remote" && !satelliteClicked) {
-      // Your code here to handle the option
       console.log("Option selected:", option);
-
       // Mark the satellite as clicked
       setSatelliteClicked(true);
     }
