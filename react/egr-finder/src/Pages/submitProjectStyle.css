@@ -55,3 +55,23 @@ label[for="projectName"] {
   #projectContact{
     width: 100%;
   }
+  
+  .submit-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px; 
+  }
+  button[type="submit"] {
+    background-color: #293476;
+    color: white;
+    padding: 10px 40px;
+    border: transparent;
+    border-radius: 2px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #465acc;
+  }

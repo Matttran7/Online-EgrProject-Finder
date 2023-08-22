@@ -1,8 +1,13 @@
 import React from 'react';
 import './submitProjectStyle.css';
+import { useNavigate } from "react-router-dom";
+
 
 function SubmitProject() {
+  const navigate = useNavigate();
+
   const handleSubmit = () => {
+    navigate('/thankyouSubmit');
   };
 
   return (
