@@ -20,4 +20,9 @@ app.post('/api/locations', async (req, res) => {
       }
   });
 
-app.listen(5000, () => { console.log("Server is running on port 5000") });
+  app.post('/api/submitProject', async (req, res) => {
+    const { projectName, groupName, projectDescription, projectContact } = req.body;
+    console.log("Projectname: " + projectName);
+  });
+  
+  app.listen(5000, () => { console.log("Server is running on port 5000") });
