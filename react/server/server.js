@@ -2,6 +2,7 @@ const express = require('express');
 const bodyparser = require('body-parser')
 var mongoDB = require('./mongo');
 const app = express();
+var mail = require('./mail');
 
 app.use(bodyparser.json());
 
@@ -22,7 +23,11 @@ app.post('/api/locations', async (req, res) => {
 
   app.post('/api/submitProject', async (req, res) => {
     const { projectName, groupName, projectDescription, projectContact } = req.body;
-    console.log("Projectname: " + projectName);
+    mail.sendEmail(
+      projectContact, // To
+      'New Project Submission for: ' + projectName, // Subject
+      `Project Name: ${projectName}\nGroup Name: ${groupName}\nProject Description: ${projectDescription}\nContact: ${projectContact}`
+    );
   });
-  
+
   app.listen(5000, () => { console.log("Server is running on port 5000") });
